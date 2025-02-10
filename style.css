@@ -1,0 +1,30 @@
+#detail {
+    display: grid;
+}
+
+#pokemon-normal {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+#pokemon-shiny {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+#pokemon-skills {
+    grid-row: 1;
+    grid-column: 3;
+}
+#previous-evolution{
+    grid-row: 1;
+    grid-column: 4;
+}
+#Stats {
+    grid-row: 2 / span 3;
+    grid-column: 4;
+}
+#Description {
+    grid-row: 2 / span 1;
+    grid-column: 2;
+}
