@@ -49,10 +49,12 @@ async function lanceRecherche(){
     myImg.style.display = 'block';
     myImg.classList.add('zoom-in');
     setTimeout(()=>{
+        rechercher();
+    },1500);
+    setTimeout(()=>{
         myImg.style.display = 'none';
         myImg.classList.remove('zoom-in');
         document.body.classList.remove('nooverflow');
-        rechercher();
     },2000);
 }
 
