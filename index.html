@@ -1,34 +1,92 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pokedex tracker</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body>
 
-    <a href="./pageDetail.html">Page detail</a>
-    <main>
-        <h1>Poketracker</h1>  
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pokedex tracker</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="pokemon.js"></script>
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
 
-        <form>
-            <div>
-              <input
-                type="search"
-                id="maRecherche"
-                name="q"
-                placeholder="Which pokemon's stats do you want to see ?" />
-              <button>Search</button>
-            </div>
-          </form>
-    </main>
-    
-    
+<body onload='javascript:recupererTypesPokemon();'>
+  <div id="searchContainer">
+    <h1>Poketracker</h1>
 
-    
-    
-  </body>
+    <form action="javascript:rechercher()" name="rechercherFormulaire">
+      <div>
+        <input type="search" id="maRecherche" name="nomPokemon" placeholder="Which pokemon's stats do you want to see ?" />
+        <button>Search</button>
+      </div>
+    </form>
+  </div>
+  <div id="detailContainer">
+    <h1>Pokemon-Display</h1>
+    <div id="detail">
+
+      <div id="pokemon-normal">
+        <p><span class="nomPokemon"></span> sous forme normale :</p>
+        <img id="regularImage" alt="A Pokemon"
+          class='pokemon' />
+      </div>
+
+      <div id="pokemon-shiny">
+        <p><span class="nomPokemon"></span> shiny :</p>
+        <img id="shinyImage" alt="A Pokemon"
+          class='pokemon' />
+      </div>
+      <div id="pokemon-skills">
+        <p>Les points forts de <span class="nomPokemon"></span> sont : </p>
+        <div id="pointsForts"></div>
+
+        <p>Les points faibles de <span class="nomPokemon"></span> sont : </p>
+        <div id="pointsFaibles"></div>
+      </div>
+      <div id="previous-evolution">
+        <img id="pre-evolution" alt="A pokemon" class='pokemon' />
+        <p id="noevolution"><span class="nomPokemon"></span> n'a pas d'évolution précédente.</p>
+      </div>
+      <div id="stats">
+        <ul>
+          <li>
+            <label for="atk">degats:</label>
+            <meter id="atk" min="0" max="100" low="33" high="66" optimum="80" value="62">at 62/100</meter>
+          </li>
+
+          <li>
+            <label for="hp">points de vie:</label>
+            <meter id="hp" min="0" max="100" low="33" high="66" optimum="80" value="60">at 60/100</meter>
+          </li>
+
+          <li>
+            <label for="def">resistance:</label>
+            <meter id="def" min="0" max="100" low="33" high="66" optimum="80" value="63">at 63/100</meter>
+          </li>
+
+          <li>
+            <label for="spe_atk">attaque spéciale:</label>
+            <meter id="spe_atk" min="0" max="100" low="33" high="66" optimum="80" value="80">at 80/100</meter>
+          </li>
+
+          <li>
+            <label for="spe_def">defense spéciale:</label>
+            <meter id="spe_def" min="0" max="100" low="33" high="66" optimum="80" value="80">at 80/100</meter>
+          </li>
+
+          <li>
+            <label for="vit">régénération:</label>
+            <meter id="vit" min="0" max="100" low="33" high="66" optimum="80" value="60">at 60/100</meter>
+          </li>
+        </ul>
+      </div>
+      <div id="description">
+        <p><span class="nomPokemon"></span> mesure <span id="height"></span> et pèse <span id="weight"></span> et il y a <span id="man"></span>% de chance que <span class="nomPokemon"></span> soit un mâle et <span id="women"></span>% que ce soit
+          une femelle</p>
+      </div>
+    </div>
+    <a href="./index.html">retour</a>
+  </div>
+</body>
 </html>

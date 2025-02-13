@@ -1,30 +1,78 @@
+@font-face { 
+     font-family: 'soulway';
+    src: url(./SoulwayFont-Demo.otf) format('opentype')
+}
+@font-face{
+     font-family: 'Hand';
+     src: url('./The Hand.ttf') format('truetype')
+}
+ 
+#detailContainer {
+    font-family: 'soulway';
+    padding: 10px;
+}
+
 #detail {
     display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    font-family: 'Hand';
 }
 
 #pokemon-normal {
-    grid-row: 1;
-    grid-column: 1;
+    grid-area: 1 / 1 / 2 / 2;
 }
 
 #pokemon-shiny {
-    grid-row: 1;
-    grid-column: 2;
+    grid-area: 1 / 2 / 2 / 3;
 }
 
 #pokemon-skills {
-    grid-row: 1;
-    grid-column: 3;
+    grid-area: 1 / 3 / 2 / 4;
 }
 #previous-evolution{
-    grid-row: 1;
-    grid-column: 4;
+    grid-area: 1 / 4/ 2 / 5;
 }
-#Stats {
-    grid-row: 2 / span 3;
-    grid-column: 4;
+
+#description {
+    grid-area: 2 / 1 / 2 / 3;
 }
-#Description {
-    grid-row: 2 / span 1;
-    grid-column: 2;
+#stats {
+    grid-area: 2 / 3 / 2 / 5;
+}
+img.pokemon{
+    width: 25vw;
+}
+
+#searchContainer {
+    padding-top: 20%;    
+    text-align: center;
+    background-color: cornflowerblue;
+}
+
+body,html {
+    margin:0;
+    padding:0;
+    background-color: cornflowerblue;
+    height: 100%;
+}
+#detailContainer {
+    display: none;
+}
+
+ul {
+    display: table;
+}
+
+li {
+    display: table-row;
+}
+
+label {
+    display: table-cell;
+    padding-right: 10px;
+}
+
+meter {
+    display: table-cell;
 }
