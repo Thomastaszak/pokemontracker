@@ -75,7 +75,7 @@ async function rechercher(){
     
     afficheImagesPokemon(pokemon,pokemonComplement);
 
-    await afficheImageEvolutionPrecedente(pokemonComplement);
+    await afficheImageEvolutionPrecedente(pokemon);
 
     afficheStatistiques(pokemonComplement);
 
@@ -106,8 +106,8 @@ async function afficheImageEvolutionPrecedente(pokemonComplement) {
     let evolutionImage = document.querySelector("#pre-evolution");
     let noevolution = document.querySelector("#noevolution");
 
-    if (pokemonComplement.evolution.pre !== null) {
-        let idEvolutionPrecedente=pokemonComplement.evolution.pre[0].pokedex_id;
+    if (pokemonComplement.apiPreEvolution !== "none") {
+        let idEvolutionPrecedente=pokemonComplement.apiPreEvolution.pokedexIdd;
         const reponse = await fetch("https://tyradex.vercel.app/api/v1/pokemon/"+idEvolutionPrecedente);
         const pokemonEvolution = await reponse.json();
         evolutionImage.src = pokemonEvolution.sprites.regular;
