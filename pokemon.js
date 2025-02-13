@@ -155,5 +155,6 @@ function getImageType(typeName) {
 function changeCouleurFond(pokemonComplement) {
     let type = pokemonComplement.types[0].name.normalize("NFD").replace(/\p{Diacritic}/gu,"").toLowerCase();
     let color = typeBackground[type];
+    document.querySelector("html").style.backgroundColor = color;
     document.body.style.backgroundColor = color;
 }
