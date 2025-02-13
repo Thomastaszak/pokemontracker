@@ -1,12 +1,17 @@
 @font-face { 
      font-family: 'soulway';
-    src: url(./SoulwayFont-Demo.otf) format('opentype')
+    src: url(./SoulwayFont-Demo.otf) format('opentype');
 }
 @font-face{
      font-family: 'Hand';
-     src: url('./The Hand.ttf') format('truetype')
+     src: url('./The Hand.ttf') format('truetype');
 }
  
+
+@font-face{
+    font-family: 'Pokemon';
+    src: url('./Pokemon Solid.ttf') format('truetype');
+}
 #detailContainer {
     font-family: 'soulway';
     padding: 10px;
@@ -112,9 +117,14 @@
 }
 
 #searchContainer {
-    padding-top: 20%;    
+    padding-top: 50px;    
     text-align: center;
     background-color: cornflowerblue;
+}
+
+#searchContainer h1 {
+    font-size : 86px;
+    font-family: 'soulway';
 }
 
 body,html {
@@ -143,4 +153,96 @@ label {
 
 meter {
     display: table-cell;
+}
+
+#erreur {
+    margin-top: 20px;
+}
+#maRecherche {
+    font-size: 20px;
+    font-family:'Pokemon';
+    width:450px;
+    padding-left:10px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+#searchContainer button {
+    background: url('./pikachu.png');
+    background-size: cover;
+    font-family:'Pokemon';
+    font-size:40px;
+    letter-spacing: 2px;
+    border:none;
+    width:190px;
+    height:173px;
+    padding-bottom:30px;
+    cursor: pointer;
+}
+
+#konamiImg {
+    position: absolute;
+    bottom: 0px;
+}
+
+@keyframes slideInUp {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+@keyframes slideOutDown {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+  
+.slide-in {
+    animation: slideInUp 0.8s ease-out forwards;
+}
+
+.slide-out {
+    animation: slideOutDown 0.8s ease-in forwards;
+}
+
+.nooverflow {
+    overflow: hidden;
+}
+
+#retourBouton {
+    border-radius: 6px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#pokeball {
+    position: absolute;
+    left:50%;
+    top:50%;
+    translate: -50% -50%;
+}
+
+@keyframes zoomIn {
+    0% {
+      width:0px;
+      opacity: 1;
+    }
+    100% {
+      width:100%;
+      opacity: 0;
+    }
+  }
+
+  .zoom-in {
+    animation: zoomIn 2s linear;
 }

@@ -21,9 +21,38 @@ let typeBackground = {
     eau: "#6493EB"
 }
 
+var k = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'],
+n = 0;
+
+window.addEventListener('keydown', async (e) => {
+    if (e.key === k[n++]) {
+        if (n === k.length) {
+            await showImage();
+            n = 0;
+            return false;
+        }
+    }
+    else {
+        n = 0;
+    }
+})
+
 async function recupererTypesPokemon() {
     let reponse = await fetch("https://tyradex.vercel.app/api/v1/types");
     pokemonTypes = await reponse.json();
+}
+
+async function lanceRecherche(){
+
+    const myImg = document.querySelector('#pokeball');
+    myImg.style.display = 'block';
+    myImg.classList.add('zoom-in');
+    setTimeout(()=>{
+        myImg.style.display = 'none';
+        myImg.classList.remove('zoom-in');
+
+        rechercher();
+    },2000);
 }
 
 async function rechercher(){
@@ -31,7 +60,12 @@ async function rechercher(){
     let searchContainer = document.querySelector("#searchContainer");
     
     let reponse = await fetch("https://pokebuildapi.fr/api/v1/pokemon/"+document.rechercherFormulaire.nomPokemon.value);
+    if(!reponse.ok) {
+        let erreur  = document.querySelector("#erreur");
+        erreur.textContent = "Un problème est survenu lors de la recuperation du pokemon "+document.rechercherFormulaire.nomPokemon.value;
+    }
     const pokemon = await reponse.json();
+
 
     reponse = await fetch("https://tyradex.vercel.app/api/v1/pokemon/"+pokemon.pokedexId);
     const pokemonComplement = await reponse.json();
@@ -157,4 +191,51 @@ function changeCouleurFond(pokemonComplement) {
     let color = typeBackground[type];
     document.querySelector("html").style.backgroundColor = color;
     document.body.style.backgroundColor = color;
+}
+
+
+async function showImage(){
+    
+    const myImg = document.querySelector('#konamiImg');
+    myImg.src = await getRandomImage();
+    
+      const containerWidth = window.innerWidth; 
+      const imageWidth = myImg.offsetWidth; 
+
+      // Définir un "left" maximal pour ne pas dépasser la fenêtre
+      const maxLeft = containerWidth - imageWidth - 100; 
+
+      // Calculer un entier aléatoire dans [0, maxLeft]
+      const randomLeft = Math.floor(Math.random() * maxLeft);
+
+      // Appliquer la position
+      myImg.style.left = `${randomLeft}px`;
+    
+    myImg.style.display = 'block';
+    myImg.classList.add('slide-in');
+    document.body.classList.add('nooverflow');
+    
+    setTimeout(() => {
+        myImg.classList.remove('slide-in');
+        myImg.classList.add('slide-out');
+    }, 3000);
+    
+    setTimeout(() => {
+        myImg.classList.remove('slide-out');
+        myImg.style.display = 'none';
+        document.body.classList.remove('nooverflow');
+    }, 4000);
+    
+}
+
+async function getRandomImage() {
+    let numPokemon = Math.round(Math.random() * 898);
+    let reponse = await fetch("https://tyradex.vercel.app/api/v1/pokemon/"+numPokemon);
+    const pokemonComplement = await reponse.json();
+    return pokemonComplement.sprites.regular;
+
+}
+
+function retour() {
+    document.location.href="./index.html";
 }

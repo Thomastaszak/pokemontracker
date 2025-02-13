@@ -12,14 +12,17 @@
 </head>
 
 <body onload='javascript:recupererTypesPokemon();'>
+  <img id="konamiImg" style="display: none; width:200px;"/>
+  <img id="pokeball" src="./pokeball.png" style="display: none;" />
   <div id="searchContainer">
     <h1>Poketracker</h1>
 
-    <form action="javascript:rechercher()" name="rechercherFormulaire">
+    <form action="javascript:lanceRecherche()" name="rechercherFormulaire">
       <div>
-        <input type="search" id="maRecherche" name="nomPokemon" placeholder="Which pokemon's stats do you want to see ?" />
+        <input type="search" id="maRecherche" name="nomPokemon" placeholder="Pokemon's name" oninput="javascript:document.querySelector('#erreur').textContent=''"/><br/>
         <button>Search</button>
       </div>
+      <div id="erreur"></div>
     </form>
   </div>
   <div id="detailContainer">
@@ -86,7 +89,7 @@
           une femelle</p>
       </div>
     </div>
-    <a href="./index.html">retour</a>
+    <button id="retourBouton" onclick="javascript:retour();">retour</button>
   </div>
 </body>
 </html>
