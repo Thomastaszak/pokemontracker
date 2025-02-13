@@ -45,12 +45,13 @@ async function recupererTypesPokemon() {
 async function lanceRecherche(){
 
     const myImg = document.querySelector('#pokeball');
+    document.body.classList.add('nooverflow');
     myImg.style.display = 'block';
     myImg.classList.add('zoom-in');
     setTimeout(()=>{
         myImg.style.display = 'none';
         myImg.classList.remove('zoom-in');
-
+        document.body.classList.remove('nooverflow');
         rechercher();
     },2000);
 }
